@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# bash_python_inject_v5.sh 
+# bash_python_inject_v6.sh 
 # Inject python code block in bash script
 # N.B.: Works only for "titanic_test" csv data
 #
@@ -52,7 +52,8 @@ print(f"xlf: {xlf}, xlfx: {xlfx}")
 sg.theme('DarkTeal2')
 
 def table_example():
-    filename = sg.popup_get_file('filename to open', no_window=True, file_types=(("CSV Files","*.csv"),))
+    filename = sg.popup_get_file('filename to open', \
+					no_window=True, file_types=(("CSV Files","*.csv"),))
     # --- populate table with file contents --- #
     if filename == '':
         return
@@ -80,7 +81,6 @@ def table_example():
                             justification='right',
                             alternating_row_color='darkblue',
                             num_rows=min(len(data), 20))]]
-
 
     window = sg.Window('Table', layout, grab_anywhere=False)
     event, values = window.read()
@@ -137,7 +137,6 @@ END
 }
 
 #----- MAIN -----
-
 # getopts
 while getopts ":hvd:" opt; do
 	case ${opt} in
@@ -181,7 +180,6 @@ while getopts ":hvd:" opt; do
 				xlFile="$1"
 				echo "xlFile: ${xlFile}"
 			fi
-			
 			;;
 		\?) 
 			echo "Invalid option: -$OPTARG" 1>&2
